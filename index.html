@@ -27,7 +27,36 @@
       </tr>
     </table>
     <!-----------------Resposta do Exercício 1------------>
+    <script>
+      const valores = document.getElementById("t1").getElementsByTagName("td")
+        for(let i=0; i<3;i++){
+        valores[i].innerText = (Math.random() * 20)
+      } 
+    </script>
+    <script>
+      let maiorValor = 0;
+      let valorMediano = 0;
+      let menorValor = 0;
 
+      for(let i=0;i<3;i++){
+        if(valores[i].innerText > maiorValor){
+          valorMediano = menorValor;
+          maiorValor = valorMediano;
+          maiorValor = valores[i].innerText;
+        }else{
+          if(valores[i].innerText > valorMediano){
+            menorValor = valorMediano
+            valorMediano = valores[i].innerText;
+          }else{
+            menorValor = valores[i].innerText;
+          }
+        }
+      }
+      valores[0].innerText = maiorValor;
+      valores[1].innerText = valorMediano;
+      valores[2].innerText = menorValor;
+
+    </script>
        
     <!---------------------------------------------------->
     <h2>2 Cores</h2>
@@ -40,6 +69,14 @@
 
     <!-----------------Resposta do Exercício 2------------>
 
+    <script>
+      let cor=0;
+      while(cor < 100000){
+        cor = Math.trunc(Math.random() * 999999)
+      }
+      document.getElementById("lista-cores").innerHTML = `<li style='background-image: linear-gradient(90deg,#ffffff,#${cor})'></li>`
+      console.log(cor)
+    </script>
     
     <!---------------------------------------------------->
 
@@ -110,6 +147,26 @@
 
     <!-----------------Resposta do Exercício 3------------>
 
+    <script>
+      const pais = document.getElementById("t2").querySelectorAll("td")
+      let maiorPais=0;
+      let maiorPaisEstilo;
+      let menorPais=100;
+      let menorPaisEstilo;
+      for(let i = 0; i < pais.length ; i++){
+        if(pais[i].innerText.length > maiorPais){
+          maiorPais = pais[i].innerText.length;
+          maiorPaisEstilo= pais[i]
+        }else{
+          if(pais[i].innerText.length < menorPais){
+            menorPais = pais[i].innerText.length
+            menorPaisEstilo= pais[i]
+          }
+        }
+      }
+      menorPaisEstilo.style.color="#ff0000"
+      document.getElementById("paisMaior").innerText = maiorPaisEstilo.innerText
+    </script>
 
     <!---------------------------------------------------->
 
@@ -149,9 +206,18 @@
     </form>
 
     <!-----------------Resposta do Exercício 4------------>
-  
-    
+    <script>
+      let num = Math.trunc(Math.random() * 19)
+      const pessoa = document.getElementById("lista-nomes").getElementsByTagName("li")[num].innerText
+      document.getElementsByTagName("input")[0].value = `${pessoa}@gmail.com` 
 
+      let senha = ""
+      for(let i=19;i>=0;i--){
+        senha  += document.getElementById("lista-nomes").getElementsByTagName("li")[i].innerText[0]
+      }
+      document.getElementsByTagName("input")[1].value = senha
+    </script>
+  
     <!---------------------------------------------------->
   </body>
 </html>
